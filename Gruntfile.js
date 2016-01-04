@@ -67,7 +67,8 @@ module.exports = function (grunt) {
           "dist/css/skins/skin-green-light.css": "build/less/skins/skin-green-light.less",
           "dist/css/skins/skin-red-light.css": "build/less/skins/skin-red-light.less",
           "dist/css/skins/skin-purple-light.css": "build/less/skins/skin-purple-light.less",
-          "dist/css/skins/_all-skins.css": "build/less/skins/_all-skins.less"
+          "dist/css/skins/_all-skins.css": "build/less/skins/_all-skins.less",
+          "bower_components/bootstrap-timepicker/css/timepicker.less": "bower_components/bootstrap-timepicker/css/timepicker.less"
         }
       },
       // Production compresses version
@@ -92,7 +93,8 @@ module.exports = function (grunt) {
           "dist/css/skins/skin-green-light.min.css": "build/less/skins/skin-green-light.less",
           "dist/css/skins/skin-red-light.min.css": "build/less/skins/skin-red-light.less",
           "dist/css/skins/skin-purple-light.min.css": "build/less/skins/skin-purple-light.less",
-          "dist/css/skins/_all-skins.min.css": "build/less/skins/_all-skins.less"
+          "dist/css/skins/_all-skins.min.css": "build/less/skins/_all-skins.less",
+          "bower_components/bootstrap-timepicker/css/timepicker.min.css": "bower_components/bootstrap-timepicker/css/timepicker.less"
         }
       }
     },
@@ -104,7 +106,8 @@ module.exports = function (grunt) {
           preserveComments: /(?:^!|@(?:license|preserve|cc_on))/
         },
         files: {
-          'dist/js/app.min.js': ['dist/js/app.js']
+          'dist/js/app.min.js': ['dist/js/app.js'],
+          'bower_components/bootstrap-timepicker/js/bootstrap-timepicker.min.js': ['bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js']
         }
       }
     },
@@ -156,7 +159,7 @@ module.exports = function (grunt) {
         csslintrc: 'build/less/.csslintrc'
       },
       dist: [
-        'dist/css/AdminLTE.css',
+        'dist/css/AdminLTE.css'
       ]
     },
 
