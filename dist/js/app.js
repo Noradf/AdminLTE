@@ -212,13 +212,17 @@ $(function () {
    */
   $('.btn-group[data-toggle="btn-toggle"]').each(function () {
     var group = $(this);
-    $(this).find(".btn").on('click', function (e) {
+    group.find(".btn").on('click', function (e) {
       group.find(".btn.active").removeClass("active");
       $(this).addClass("active");
       e.preventDefault();
     });
 
   });
+
+  if ($.fn.datepicker && $.fn.datepicker.DPGlobal) {
+    $.fn.datepicker.DPGlobal.template = $.fn.datepicker.DPGlobal.template.replace(/" ?table-condensed"/g, '"table table-condensed"');
+  }
 });
 
 /* ----------------------------------
@@ -479,28 +483,19 @@ function _init() {
     },
     //Open the control sidebar
     open: function (sidebar, slide) {
-      //Slide over content
-      if (slide) {
-        sidebar.addClass('control-sidebar-open');
-      } else {
-        //Push the content by adding the open class to the body instead
-        //of the sidebar itself
-        $('body').addClass('control-sidebar-open');
-      }
+      //Slide over content or Push the content by adding the open class to the body instead of the sidebar itself
+      var $control = (slide) ? sidebar : $('body');
+      $control.addClass('control-sidebar-open');
     },
     //Close the control sidebar
     close: function (sidebar, slide) {
-      if (slide) {
-        sidebar.removeClass('control-sidebar-open');
-      } else {
-        $('body').removeClass('control-sidebar-open');
-      }
+      var $control = (slide) ? sidebar : $('body');
+      $control.removeClass('control-sidebar-open');
     },
     _fix: function (sidebar) {
       var _this = this;
       if ($("body").hasClass('layout-boxed')) {
-        sidebar.css('position', 'absolute');
-        sidebar.height($(".wrapper").height());
+        sidebar.css('position', 'absolute').height($(".wrapper").height());
         $(window).resize(function () {
           _this._fix(sidebar);
         });
